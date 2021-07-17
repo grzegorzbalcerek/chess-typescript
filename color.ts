@@ -1,4 +1,3 @@
-import { assert } from './assert'
 
 export type Color = 'White' | 'Black'
 
@@ -16,7 +15,9 @@ export function firstRow(color: Color): 1 | 8 {
     }
 }
 
-assert(other('White') === 'White')
-console.log(other('Black'))
-console.log(firstRow('White'))
-console.log(firstRow('Black'))
+import { assert } from './assert'
+
+assert(other('White') === 'Black')
+assert(other('Black') === 'White')
+assert(firstRow('White') === 1)
+assert(firstRow('Black') === 8)

@@ -33,3 +33,7 @@ class Figure {
         }
     }
 }
+
+import { assert } from './assert'
+
+assert(new Figure('King', 'White').show() === 'k')
