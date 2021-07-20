@@ -1,15 +1,26 @@
 import { Color, other, firstRow } from "./color"
 
+/*
+  Represents chess figure types.
+*/
 type FigureType = 'King' | 'Queen' | 'Rook' | 'Bishop' | 'Knight' | 'Pawn'
 
-class Figure {
+/*
+  Represents a figure, which has a type and a color.
+*/
+export class Figure {
+
     figureType: FigureType;
     figureColor: Color;
+
     constructor(ft: FigureType, fc: Color) {
         this.figureType = ft;
         this.figureColor = fc;
     }
 
+    /*
+      Returns a one-character string representing the figure
+    */
     show() {
         switch(this.figureColor) {
         case 'White':

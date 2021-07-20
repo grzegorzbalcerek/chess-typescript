@@ -9,7 +9,7 @@ import { Color, firstRow, other } from './color'
   the field coordinates on the chess board.
   Valid fields have coordinates in the range between 1 and 8.
 */
-class Field {
+export class Field {
     col: number;
     row: number;
 
@@ -56,6 +56,9 @@ class Field {
     }
 }
 
+/*
+  Construct the Field based on its 2-character coordinates.
+*/
 function readField(input: String): Field {
     return new Field(
         input.toLowerCase().charCodeAt(0) - 96,

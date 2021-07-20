@@ -1,6 +1,12 @@
-
+/*
+  The 'Color' type represents one of the two colors ('Black' or 'White')
+  used in the game of Chess.
+*/
 export type Color = 'White' | 'Black'
 
+/*
+  The 'other' method returns the opposite color.
+*/
 export function other(color: Color): Color {
     switch(color) {
     case 'White': return 'Black';
@@ -8,6 +14,10 @@ export function other(color: Color): Color {
     }
 }
 
+/*
+  The 'firstRow' method returns the coordinate of the first row
+  from the point of view of a player who plays the given color.
+*/
 export function firstRow(color: Color): 1 | 8 {
     switch(color) {
     case 'White': return 1;
