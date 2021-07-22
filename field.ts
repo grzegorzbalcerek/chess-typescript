@@ -33,8 +33,16 @@ export class Field {
       Returns a new field with coordinates moved
       by the given number of rows and columns relative to the original field.
     */
-    relative(col: number, row: number) {
+    relative([col,row]: [number,number]) {
         return new Field(this.col + col, this.row + row);
+    }
+
+    /*
+      Returns a new field with coordinates moved
+      by the given number of rows and columns relative to the original field.
+    */
+    relativeFields(relativeMoves: [number,number][]) {
+        return relativeMoves.map(relativeMove => this.relative(relativeMove))
     }
 
     /*
@@ -73,8 +81,12 @@ assert(readField('c4').col === 3)
 assert(readField('c4').row === 4)
 assert(readField('C4').col === 3)
 assert(readField('C4').row === 4)
-assert(new Field(3,4).relative(1,1).col === 4)
-assert(new Field(3,4).relative(1,1).row === 5)
+assert(new Field(3,4).relative([1,1]).col === 4)
+assert(new Field(3,4).relative([1,1]).row === 5)
+assert(new Field(3,4).relativeFields([[1,1],[3,4]])[0].col === 4)
+assert(new Field(3,4).relativeFields([[1,1],[3,4]])[0].row === 5)
+assert(new Field(3,4).relativeFields([[1,1],[3,4]])[1].col === 6)
+assert(new Field(3,4).relativeFields([[1,1],[3,4]])[1].row === 8)
 assert(!readField('c4').isLastRow('Black'))
 assert(!readField('d8').isLastRow('Black'))
 assert(readField('d8').isLastRow('White'))
